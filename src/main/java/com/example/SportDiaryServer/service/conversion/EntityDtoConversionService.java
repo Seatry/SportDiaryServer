@@ -74,7 +74,7 @@ public class EntityDtoConversionService {
         return modelMapper.map(editDto, Tempo.class);
     }
 
-    public Test convertDtoToEntity(EditDto editDto) {
+    public Test convertDtoToEntityTest(EditDto editDto) {
         return modelMapper.map(editDto, Test.class);
     }
 

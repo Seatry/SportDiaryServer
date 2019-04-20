@@ -12,7 +12,7 @@ public class Table {
     public static final String EQUIPMENT = "Equipment";
     public static final String BORG = "Borg";
     public static final String COMPETITION = "Competition";
-    public static final String IMPORTNACE = "Importance";
+    public static final String IMPORTANCE = "Importance";
     public static final String REST_PLACE = "RestPlace";
     public static final String TEMPO = "Tempo";
     public static final String TEST = "Test";

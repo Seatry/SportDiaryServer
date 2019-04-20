@@ -11,8 +11,8 @@ import lombok.experimental.Accessors;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EditDto {
+public class CompetitionToImportanceDto {
     private Long id;
-    private String userId;
-    private String name;
+    private Long competitionId;
+    private Long importanceId;
 }

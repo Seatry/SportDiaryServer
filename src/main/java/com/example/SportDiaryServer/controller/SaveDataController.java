@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 
+import static com.example.SportDiaryServer.enums.Table.*;
+
 @RestController
 @RequestMapping("/save")
 public class SaveDataController {
@@ -103,8 +105,8 @@ public class SaveDataController {
                                    @RequestParam("data") String data) {
         try {
             switch (table) {
-                case "Time":
-                    timeRepository.save(conversionService.convertDtoToEntity(objectMapper.readValue(data, EditDto.class)));
+                case TIME:
+                    timeRepository.save(conversionService.convertDtoToEntityTime(objectMapper.readValue(data, EditDto.class)));
             }
             return new ResponseEntity(HttpStatus.OK);
         } catch (IOException e) {

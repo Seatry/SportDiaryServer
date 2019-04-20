@@ -11,8 +11,7 @@ import lombok.experimental.Accessors;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EditDto {
+public class DreamQuestionDto {
     private Long id;
-    private String userId;
-    private String name;
+    private String question;
 }

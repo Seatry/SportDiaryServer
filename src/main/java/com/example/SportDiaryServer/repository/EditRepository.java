@@ -1,4 +1,4 @@
-package com.example.SportDiaryServer.repository.editRepository;
+package com.example.SportDiaryServer.repository;
 
 import com.example.SportDiaryServer.entity.editEntity.Edit;
 import org.springframework.data.jpa.repository.JpaRepository;

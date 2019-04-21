@@ -1,13 +1,16 @@
 package com.example.SportDiaryServer.dto;
 
+import com.example.SportDiaryServer.entity.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import org.springframework.lang.Nullable;
 
 import java.util.Date;
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Accessors(chain = true)
@@ -41,4 +44,16 @@ public class DayDto {
 
     @JsonProperty("season_plan_id")
     private Long seasonPlanId;
+
+    private List<TrainingDto> trainings;
+
+    private List<DayToTestDto> dayToTests;
+
+    private List<RestDto> rests;
+
+    private List<DreamAnswerDto> dreamAnswers;
+
+    private List<SanAnswerDto> sanAnswers;
+
+    private CompetitionToImportanceDto competitionToImportance;
 }

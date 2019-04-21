@@ -4,6 +4,9 @@ import com.example.SportDiaryServer.entity.editEntity.*;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface TrainingPlaceRepository extends JpaRepository<TrainingPlace, Long> {
+    List<TrainingPlace> findAllByUserId(String userId);
 }

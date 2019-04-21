@@ -1,11 +1,14 @@
 package com.example.SportDiaryServer.dto;
 
+import com.example.SportDiaryServer.entity.HeartRate;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+
+import java.util.List;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Accessors(chain = true)
@@ -14,12 +17,12 @@ import lombok.experimental.Accessors;
 @AllArgsConstructor
 public class TrainingExerciseDto {
     private Long id;
-    private int work;
-    private int rest;
+    private int work = 1;
+    private int rest = 1;
     private int length;
     private int repeats;
     private int series;
-    private String note;
+    private String note = "";
     private int minutes;
     private double hrAvg;
 
@@ -40,4 +43,6 @@ public class TrainingExerciseDto {
 
     @JsonProperty("borg_id")
     private Long borgId;
+
+    private List<HeartRateDto> heartRates;
 }

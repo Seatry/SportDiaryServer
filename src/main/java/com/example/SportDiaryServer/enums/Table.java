@@ -29,7 +29,7 @@ public class Table {
     public static final String SAN_QUESTION = "SanQuestion";
     public static final String SEASON_PLAN = "SeasonPlan";
     public static final String TRAINING = "Training";
-    public static final String TRAINING_EXERICSE = "TrainingExercise";
+    public static final String TRAINING_EXERCISE = "TrainingExercise";
     public static final String TRAININGS_TO_AIMS = "TrainingsToAims";
     public static final String TRAININGS_TO_EQUIPMENTS = "TrainingsToEquipments";
 }

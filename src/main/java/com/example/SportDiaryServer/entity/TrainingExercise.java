@@ -6,13 +6,15 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
+import static com.example.SportDiaryServer.enums.Table.TRAINING_EXERCISE;
+
 @Accessors(chain = true)
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table
+@Table(name = TRAINING_EXERCISE)
 public class TrainingExercise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

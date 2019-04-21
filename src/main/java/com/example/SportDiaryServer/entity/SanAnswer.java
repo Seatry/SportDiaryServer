@@ -5,13 +5,15 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
+import static com.example.SportDiaryServer.enums.Table.SAN_ANSWER;
+
 @Accessors(chain = true)
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table
+@Table(name = SAN_ANSWER)
 public class SanAnswer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

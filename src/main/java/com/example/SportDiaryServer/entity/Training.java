@@ -8,13 +8,15 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
+import static com.example.SportDiaryServer.enums.Table.TRAINING;
+
 @Accessors(chain = true)
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table
+@Table(name = TRAINING)
 public class Training {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

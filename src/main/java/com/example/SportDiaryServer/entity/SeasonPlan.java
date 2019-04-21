@@ -6,13 +6,15 @@ import lombok.experimental.Accessors;
 import javax.persistence.*;
 import java.util.Date;
 
+import static com.example.SportDiaryServer.enums.Table.SEASON_PLAN;
+
 @Accessors(chain = true)
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table
+@Table(name = SEASON_PLAN)
 public class SeasonPlan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

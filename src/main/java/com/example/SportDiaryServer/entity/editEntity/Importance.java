@@ -5,12 +5,14 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
+import static com.example.SportDiaryServer.enums.Table.IMPORTANCE;
+
 @Accessors(chain = true)
 @Getter
 @Setter
 @AllArgsConstructor
 @Entity
-@Table
+@Table(name = IMPORTANCE)
 public class Importance extends Edit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

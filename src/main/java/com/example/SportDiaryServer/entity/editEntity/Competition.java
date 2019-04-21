@@ -5,12 +5,14 @@ import lombok.experimental.Accessors;
 
 import javax.persistence.*;
 
+import static com.example.SportDiaryServer.enums.Table.COMPETITION;
+
 @Accessors(chain = true)
 @Getter
 @Setter
 @AllArgsConstructor
 @Entity
-@Table
+@Table(name = COMPETITION)
 public class Competition extends Edit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

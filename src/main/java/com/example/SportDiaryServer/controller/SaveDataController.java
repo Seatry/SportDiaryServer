@@ -189,7 +189,7 @@ public class SaveDataController {
                 case TRAINING:
                     trainingRepository.save(conversionService.convertDtoToEntity(objectMapper.readValue(data, TrainingDto.class)));
                     break;
-                case TRAINING_EXERICSE:
+                case TRAINING_EXERCISE:
                     trainingExerciseRepository.save(conversionService.convertDtoToEntity(objectMapper.readValue(data, TrainingExerciseDto.class)));
                     break;
                 case TRAININGS_TO_AIMS:
@@ -295,7 +295,7 @@ public class SaveDataController {
                 case TRAINING:
                     trainingRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, TrainingDto.class)));
                     break;
-                case TRAINING_EXERICSE:
+                case TRAINING_EXERCISE:
                     trainingExerciseRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, TrainingExerciseDto.class)));
                     break;
                 case TRAININGS_TO_AIMS:

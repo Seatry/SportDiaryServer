@@ -104,7 +104,7 @@ public class SaveDataController {
     public ResponseEntity onInsertAndUpdate(@RequestParam("table") String table,
                                    @RequestParam("data") String data) {
         try {
-            switch (table) {
+            switch (table.toLowerCase()) {
                 case TIME:
                     timeRepository.save(conversionService.convertDtoToEntityTime(objectMapper.readValue(data, EditDto.class)));
                     break;

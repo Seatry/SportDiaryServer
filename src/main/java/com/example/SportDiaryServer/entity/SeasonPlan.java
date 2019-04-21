@@ -17,7 +17,6 @@ import static com.example.SportDiaryServer.enums.Table.SEASON_PLAN;
 @Table(name = SEASON_PLAN)
 public class SeasonPlan {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "userid")

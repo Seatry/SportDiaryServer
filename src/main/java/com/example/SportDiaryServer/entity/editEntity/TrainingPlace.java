@@ -16,7 +16,6 @@ import static com.example.SportDiaryServer.enums.Table.TRAINING_PLACE;
 @Table(name = TRAINING_PLACE)
 public class TrainingPlace extends Edit {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "userid")

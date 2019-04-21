@@ -17,7 +17,6 @@ import static com.example.SportDiaryServer.enums.Table.SAN_QUESTION;
 @Table(name = SAN_QUESTION)
 public class SanQuestion {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String positive;

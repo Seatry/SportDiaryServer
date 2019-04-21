@@ -16,7 +16,6 @@ import static com.example.SportDiaryServer.enums.Table.BORG;
 @Table(name = BORG)
 public class Borg extends Edit {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "userid")

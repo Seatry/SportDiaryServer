@@ -1,9 +1,5 @@
 package com.example.SportDiaryServer.entity;
 
-import com.example.SportDiaryServer.entity.editEntity.Block;
-import com.example.SportDiaryServer.entity.editEntity.Camp;
-import com.example.SportDiaryServer.entity.editEntity.Stage;
-import com.example.SportDiaryServer.entity.editEntity.Type;
 import lombok.*;
 import lombok.experimental.Accessors;
 
@@ -21,7 +17,6 @@ import static com.example.SportDiaryServer.enums.Table.DAY;
 @Table(name = DAY)
 public class Day {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private Date date;
@@ -31,27 +26,21 @@ public class Day {
     private double activity = 0;
     private double dream = 0;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH, targetEntity = CompetitionToImportance.class)
-    @JoinColumn(name = "competition_to_importance_id", referencedColumnName = "id")
+    @Column(name = "competition_to_importance_id")
     private Long competitionToImportanceId;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH, targetEntity = Block.class)
-    @JoinColumn(name = "block_id", referencedColumnName = "id")
+    @Column(name = "block_id")
     private Long blockId;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH, targetEntity = Stage.class)
-    @JoinColumn(name = "stage_id", referencedColumnName = "id")
+    @Column(name = "stage_id")
     private Long stageId;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH, targetEntity = Type.class)
-    @JoinColumn(name = "type_id", referencedColumnName = "id")
+    @Column(name = "type_id")
     private Long typeId;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.REFRESH, targetEntity = Camp.class)
-    @JoinColumn(name = "camp_id", referencedColumnName = "id")
+    @Column(name = "camp_id")
     private Long campId;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE, CascadeType.REFRESH}, targetEntity = SeasonPlan.class)
-    @JoinColumn(name = "season_plan_id", referencedColumnName = "id")
+    @Column(name = "season_plan_id")
     private Long seasonPlanId;
 }

@@ -16,7 +16,6 @@ import static com.example.SportDiaryServer.enums.Table.REST_PLACE;
 @Table(name = REST_PLACE)
 public class RestPlace extends Edit {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "userid")

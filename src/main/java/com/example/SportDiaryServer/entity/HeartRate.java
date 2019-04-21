@@ -16,7 +16,6 @@ import static com.example.SportDiaryServer.enums.Table.HEART_RATE;
 @Table(name = HEART_RATE)
 public class HeartRate {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String time;
@@ -24,7 +23,6 @@ public class HeartRate {
     private int repeat;
     private int hr = 0;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE, CascadeType.REFRESH}, targetEntity = TrainingExercise.class)
-    @JoinColumn(name = "exercise_id", referencedColumnName = "id")
+    @Column(name = "exercise_id")
     private Long exerciseId;
 }

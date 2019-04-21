@@ -16,7 +16,6 @@ import static com.example.SportDiaryServer.enums.Table.BLOCK;
 @Table(name = BLOCK)
 public class Block extends Edit {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "userid")

@@ -16,7 +16,6 @@ import static com.example.SportDiaryServer.enums.Table.DREAM_QUESTION;
 @Table(name = DREAM_QUESTION)
 public class DreamQuestion {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String question;

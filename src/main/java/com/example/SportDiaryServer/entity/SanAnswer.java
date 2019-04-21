@@ -16,16 +16,13 @@ import static com.example.SportDiaryServer.enums.Table.SAN_ANSWER;
 @Table(name = SAN_ANSWER)
 public class SanAnswer {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private int answer;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE, CascadeType.REFRESH}, targetEntity = Day.class)
-    @JoinColumn(name = "day_id", referencedColumnName = "id")
+    @Column(name = "day_id")
     private Long dayId;
 
-    @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE, CascadeType.REFRESH}, targetEntity = SanQuestion.class)
-    @JoinColumn(name = "question_id", referencedColumnName = "id")
+    @Column(name = "question_id")
     private Long questionId;
 }

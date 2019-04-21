@@ -27,6 +27,8 @@ public class TrainingExercise {
     private int series = 0;
     private String note = "";
     private int minutes = 0;
+
+    @Column(name = "hravg")
     private double hrAvg = 0;
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REMOVE, CascadeType.REFRESH}, targetEntity = Training.class)

@@ -18,4 +18,9 @@ public class Equipment extends Edit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(name = "userid")
+    private String userId;
+
+    private String name;
 }

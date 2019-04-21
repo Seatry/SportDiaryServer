@@ -1,8 +1,8 @@
 package com.example.SportDiaryServer.controller;
 
 import com.example.SportDiaryServer.dto.*;
-import com.example.SportDiaryServer.entity.editEntity.*;
 import com.example.SportDiaryServer.repository.*;
+import com.example.SportDiaryServer.repository.editRepository.*;
 import com.example.SportDiaryServer.service.conversion.EntityDtoConversionService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,23 +18,23 @@ import static com.example.SportDiaryServer.enums.Table.*;
 @RequestMapping("/save")
 public class SaveDataController {
     private final ObjectMapper objectMapper = new ObjectMapper();
-    private final EditRepository<Time> timeRepository;
-    private final EditRepository<Aim> aimRepository;
-    private final EditRepository<Block> blockRepository;
-    private final EditRepository<Borg> borgRepository;
-    private final EditRepository<Camp> campRepository;
-    private final EditRepository<Competition> competitionRepository;
-    private final EditRepository<Equipment> equipmentRepository;
-    private final EditRepository<Exercise> exerciseRepository;
-    private final EditRepository<Importance> importanceRepository;
-    private final EditRepository<RestPlace> restPlaceRepository;
-    private final EditRepository<Stage> stageRepository;
-    private final EditRepository<Style> styleRepository;
-    private final EditRepository<Tempo> tempoRepository;
-    private final EditRepository<Test> testRepository;
-    private final EditRepository<TrainingPlace> trainingPlaceRepository;
-    private final EditRepository<Type> typeRepository;
-    private final EditRepository<Zone> zoneRepository;
+    private final TimeRepository timeRepository;
+    private final AimRepository aimRepository;
+    private final BlockRepository blockRepository;
+    private final BorgRepository borgRepository;
+    private final CampRepository campRepository;
+    private final CompetitionRepository competitionRepository;
+    private final EquipmentRepository equipmentRepository;
+    private final ExerciseRepository exerciseRepository;
+    private final ImportanceRepository importanceRepository;
+    private final RestPlaceRepository restPlaceRepository;
+    private final StageRepository stageRepository;
+    private final StyleRepository styleRepository;
+    private final TempoRepository tempoRepository;
+    private final TestRepository testRepository;
+    private final TrainingPlaceRepository trainingPlaceRepository;
+    private final TypeRepository typeRepository;
+    private final ZoneRepository zoneRepository;
     private final CompetitionToImportanceRepository competitionToImportanceRepository;
     private final DayRepository dayRepository;
     private final DayToTestRepository dayToTestRepository;
@@ -52,13 +52,13 @@ public class SaveDataController {
     private final EntityDtoConversionService conversionService;
 
     @Autowired
-    public SaveDataController(EditRepository<Competition> competitionRepository, EntityDtoConversionService conversionService, EditRepository<Time> timeRepository,
-                              EditRepository<Aim> aimRepository, EditRepository<Block> blockRepository, EditRepository<Borg> borgRepository,
-                              EditRepository<Camp> campRepository, EditRepository<Equipment> equipmentRepository, EditRepository<Exercise> exerciseRepository,
-                              EditRepository<Importance> importanceRepository, EditRepository<RestPlace> restPlaceRepository,
-                              EditRepository<Stage> stageRepository, EditRepository<Style> styleRepository, EditRepository<Tempo> tempoRepository,
-                              EditRepository<Test> testRepository, EditRepository<TrainingPlace> trainingPlaceRepository, EditRepository<Type> typeRepository,
-                              EditRepository<Zone> zoneRepository, CompetitionToImportanceRepository competitionToImportanceRepository, DayRepository dayRepository,
+    public SaveDataController(CompetitionRepository competitionRepository, EntityDtoConversionService conversionService, TimeRepository timeRepository,
+                              AimRepository aimRepository, BlockRepository blockRepository, BorgRepository borgRepository,
+                              CampRepository campRepository, EquipmentRepository equipmentRepository, ExerciseRepository exerciseRepository,
+                              ImportanceRepository importanceRepository, RestPlaceRepository restPlaceRepository,
+                              StageRepository stageRepository, StyleRepository styleRepository, TempoRepository tempoRepository,
+                              TestRepository testRepository, TrainingPlaceRepository trainingPlaceRepository, TypeRepository typeRepository,
+                              ZoneRepository zoneRepository, CompetitionToImportanceRepository competitionToImportanceRepository, DayRepository dayRepository,
                               DayToTestRepository dayToTestRepository, DreamAnswerRepository dreamAnswerRepository,
                               DreamQuestionRepository dreamQuestionRepository, HeartRateRepository heartRateRepository,
                               RestRepository restRepository, SanAnswerRepository sanAnswerRepository, SanQuestionRepository sanQuestionRepository,

@@ -11,6 +11,7 @@ import static com.example.SportDiaryServer.enums.Table.REST_PLACE;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = REST_PLACE)
 public class RestPlace extends Edit {

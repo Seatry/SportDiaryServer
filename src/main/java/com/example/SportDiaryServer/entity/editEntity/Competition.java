@@ -11,6 +11,7 @@ import static com.example.SportDiaryServer.enums.Table.COMPETITION;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = COMPETITION)
 public class Competition extends Edit {

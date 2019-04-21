@@ -11,6 +11,7 @@ import static com.example.SportDiaryServer.enums.Table.BORG;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = BORG)
 public class Borg extends Edit {

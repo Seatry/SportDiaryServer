@@ -11,6 +11,7 @@ import static com.example.SportDiaryServer.enums.Table.STYLE;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = STYLE)
 public class Style extends Edit {

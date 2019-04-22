@@ -194,7 +194,11 @@ public class SaveDataController {
                     trainingRepository.save(conversionService.convertDtoToEntity(objectMapper.readValue(data, TrainingDto.class)));
                     break;
                 case TRAINING_EXERCISE:
-                    trainingExerciseRepository.save(conversionService.convertDtoToEntity(objectMapper.readValue(data, TrainingExerciseDto.class)));
+                    var trainingExerciseDto = objectMapper.readValue(data, TrainingExerciseDto.class);
+                    trainingExerciseRepository.save(conversionService.convertDtoToEntity(trainingExerciseDto));
+                    for (var heartRateDto : trainingExerciseDto.getHeartRates()) {
+                        heartRateRepository.save(conversionService.convertDtoToEntity(heartRateDto));
+                    }
                     break;
                 case TRAININGS_TO_AIMS:
                     trainingsToAimsRepository.save(conversionService.convertDtoToEntity(objectMapper.readValue(data, TrainingsToAimsDto.class)));

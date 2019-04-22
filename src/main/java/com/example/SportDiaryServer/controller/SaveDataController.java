@@ -208,106 +208,102 @@ public class SaveDataController {
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity onDelete(@RequestParam("table") String table,
-                                   @RequestParam("data") String data) {
-        try {
-            switch (table) {
-                case TIME:
-                    timeRepository.delete(conversionService.convertDtoToEntityTime(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case AIM:
-                    aimRepository.delete(conversionService.convertDtoToEntityAim(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case BLOCK:
-                    blockRepository.delete(conversionService.convertDtoToEntityBlock(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case BORG:
-                    borgRepository.delete(conversionService.convertDtoToEntityBorg(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case CAMP:
-                    campRepository.delete(conversionService.convertDtoToEntityCamp(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case COMPETITION:
-                    competitionRepository.delete(conversionService.convertDtoToEntityCompetition(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case EQUIPMENT:
-                    equipmentRepository.delete(conversionService.convertDtoToEntityEquipment(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case EXERCISE:
-                    exerciseRepository.delete(conversionService.convertDtoToEntityExercise(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case IMPORTANCE:
-                    importanceRepository.delete(conversionService.convertDtoToEntityImportance(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case REST_PLACE:
-                    restPlaceRepository.delete(conversionService.convertDtoToEntityRestPlace(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case STAGE:
-                    stageRepository.delete(conversionService.convertDtoToEntityStage(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case STYLE:
-                    styleRepository.delete(conversionService.convertDtoToEntityStyle(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case TEMPO:
-                    tempoRepository.delete(conversionService.convertDtoToEntityTempo(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case TEST:
-                    testRepository.delete(conversionService.convertDtoToEntityTest(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case TRAINING_PLACE:
-                    trainingPlaceRepository.delete(conversionService.convertDtoToEntityTrainingPlace(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case TYPE:
-                    typeRepository.delete(conversionService.convertDtoToEntityType(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case ZONE:
-                    zoneRepository.delete(conversionService.convertDtoToEntityZone(objectMapper.readValue(data, EditDto.class)));
-                    break;
-                case COMPETITION_TO_IMPORTANCE:
-                    competitionToImportanceRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, CompetitionToImportanceDto.class)));
-                    break;
-                case DAY:
-                    dayRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, DayDto.class)));
-                    break;
-                case DAY_TO_TEST:
-                    dayToTestRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, DayToTestDto.class)));
-                    break;
-                case DREAM_ANSWER:
-                    dreamAnswerRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, DreamAnswerDto.class)));
-                    break;
-                case DREAM_QUESTION:
-                    dreamQuestionRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, DreamQuestionDto.class)));
-                    break;
-                case SAN_ANSWER:
-                    sanAnswerRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, SanAnswerDto.class)));
-                    break;
-                case SAN_QUESTION:
-                    sanQuestionRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, SanQuestionDto.class)));
-                    break;
-                case HEART_RATE:
-                    heartRateRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, HeartRateDto.class)));
-                    break;
-                case REST:
-                    restRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, RestDto.class)));
-                    break;
-                case SEASON_PLAN:
-                    seasonPlanRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, SeasonPlanDto.class)));
-                    break;
-                case TRAINING:
-                    trainingRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, TrainingDto.class)));
-                    break;
-                case TRAINING_EXERCISE:
-                    trainingExerciseRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, TrainingExerciseDto.class)));
-                    break;
-                case TRAININGS_TO_AIMS:
-                    trainingsToAimsRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, TrainingsToAimsDto.class)));
-                    break;
-                case TRAININGS_TO_EQUIPMENTS:
-                    trainingsToEquipmentsRepository.delete(conversionService.convertDtoToEntity(objectMapper.readValue(data, TrainingsToEquipmentsDto.class)));
-                    break;
-            }
-            return new ResponseEntity(HttpStatus.OK);
-        } catch (IOException e) {
-            return new ResponseEntity(HttpStatus.EXPECTATION_FAILED);
+                                   @RequestParam("id") Long id) {
+        switch (table) {
+            case TIME:
+                timeRepository.deleteById(id);
+                break;
+            case AIM:
+                aimRepository.deleteById(id);
+                break;
+            case BLOCK:
+                blockRepository.deleteById(id);
+                break;
+            case BORG:
+                borgRepository.deleteById(id);
+                break;
+            case CAMP:
+                campRepository.deleteById(id);
+                break;
+            case COMPETITION:
+                competitionRepository.deleteById(id);
+                break;
+            case EQUIPMENT:
+                equipmentRepository.deleteById(id);
+                break;
+            case EXERCISE:
+                exerciseRepository.deleteById(id);
+                break;
+            case IMPORTANCE:
+                importanceRepository.deleteById(id);
+                break;
+            case REST_PLACE:
+                restPlaceRepository.deleteById(id);
+                break;
+            case STAGE:
+                stageRepository.deleteById(id);
+                break;
+            case STYLE:
+                styleRepository.deleteById(id);
+                break;
+            case TEMPO:
+                tempoRepository.deleteById(id);
+                break;
+            case TEST:
+                testRepository.deleteById(id);
+                break;
+            case TRAINING_PLACE:
+                trainingPlaceRepository.deleteById(id);
+                break;
+            case TYPE:
+                typeRepository.deleteById(id);
+                break;
+            case ZONE:
+                zoneRepository.deleteById(id);
+                break;
+            case COMPETITION_TO_IMPORTANCE:
+                competitionToImportanceRepository.deleteById(id);
+                break;
+            case DAY:
+                dayRepository.deleteById(id);
+                break;
+            case DAY_TO_TEST:
+                dayToTestRepository.deleteById(id);
+                break;
+            case DREAM_ANSWER:
+                dreamAnswerRepository.deleteById(id);
+                break;
+            case DREAM_QUESTION:
+                dreamQuestionRepository.deleteById(id);
+                break;
+            case SAN_ANSWER:
+                sanAnswerRepository.deleteById(id);
+                break;
+            case SAN_QUESTION:
+                sanQuestionRepository.deleteById(id);
+                break;
+            case HEART_RATE:
+                heartRateRepository.deleteById(id);
+                break;
+            case REST:
+                restRepository.deleteById(id);
+                break;
+            case SEASON_PLAN:
+                seasonPlanRepository.deleteById(id);
+                break;
+            case TRAINING:
+                trainingRepository.deleteById(id);
+                break;
+            case TRAINING_EXERCISE:
+                trainingExerciseRepository.deleteById(id);
+                break;
+            case TRAININGS_TO_AIMS:
+                trainingsToAimsRepository.deleteById(id);
+                break;
+            case TRAININGS_TO_EQUIPMENTS:
+                trainingsToEquipmentsRepository.deleteById(id);
+                break;
         }
+        return new ResponseEntity(HttpStatus.OK);
     }
 }

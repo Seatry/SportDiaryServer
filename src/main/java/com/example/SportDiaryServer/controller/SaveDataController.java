@@ -184,7 +184,11 @@ public class SaveDataController {
                     restRepository.save(conversionService.convertDtoToEntity(objectMapper.readValue(data, RestDto.class)));
                     break;
                 case SEASON_PLAN:
-                    seasonPlanRepository.save(conversionService.convertDtoToEntity(objectMapper.readValue(data, SeasonPlanDto.class)));
+                    var seasonPlanDto = objectMapper.readValue(data, SeasonPlanDto.class);
+                    seasonPlanRepository.save(conversionService.convertDtoToEntity(seasonPlanDto));
+                    for (var dayDto : seasonPlanDto.getDays()) {
+                        dayRepository.save(conversionService.convertDtoToEntity(dayDto));
+                    }
                     break;
                 case TRAINING:
                     trainingRepository.save(conversionService.convertDtoToEntity(objectMapper.readValue(data, TrainingDto.class)));

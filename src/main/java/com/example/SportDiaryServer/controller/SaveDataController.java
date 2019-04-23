@@ -217,7 +217,7 @@ public class SaveDataController {
     @ResponseBody
     public ResponseEntity onDelete(@RequestParam("table") String table,
                                    @RequestParam("id") Long id) {
-        switch (table) {
+        switch (table.toLowerCase()) {
             case TIME:
                 timeRepository.deleteById(id);
                 break;

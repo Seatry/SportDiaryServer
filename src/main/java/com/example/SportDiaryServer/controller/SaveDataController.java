@@ -1,6 +1,7 @@
 package com.example.SportDiaryServer.controller;
 
 import com.example.SportDiaryServer.dto.*;
+import com.example.SportDiaryServer.entity.Version;
 import com.example.SportDiaryServer.repository.*;
 import com.example.SportDiaryServer.repository.editRepository.*;
 import com.example.SportDiaryServer.service.conversion.EntityDtoConversionService;
@@ -50,6 +51,7 @@ public class SaveDataController {
     private final TrainingsToAimsRepository trainingsToAimsRepository;
     private final TrainingsToEquipmentsRepository trainingsToEquipmentsRepository;
     private final EntityDtoConversionService conversionService;
+    private final VersionRepository versionRepository;
 
     @Autowired
     public SaveDataController(CompetitionRepository competitionRepository, EntityDtoConversionService conversionService, TimeRepository timeRepository,
@@ -64,7 +66,7 @@ public class SaveDataController {
                               RestRepository restRepository, SanAnswerRepository sanAnswerRepository, SanQuestionRepository sanQuestionRepository,
                               SeasonPlanRepository seasonPlanRepository, TrainingExerciseRepository trainingExerciseRepository,
                               TrainingRepository trainingRepository, TrainingsToAimsRepository trainingsToAimsRepository,
-                              TrainingsToEquipmentsRepository trainingsToEquipmentsRepository) {
+                              TrainingsToEquipmentsRepository trainingsToEquipmentsRepository, VersionRepository versionRepository) {
         this.competitionRepository = competitionRepository;
         this.conversionService = conversionService;
         this.timeRepository = timeRepository;
@@ -97,12 +99,19 @@ public class SaveDataController {
         this.trainingRepository = trainingRepository;
         this.trainingsToAimsRepository = trainingsToAimsRepository;
         this.trainingsToEquipmentsRepository = trainingsToEquipmentsRepository;
+        this.versionRepository = versionRepository;
     }
 
     @RequestMapping(value = {"/insert", "/update"}, method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity onInsertAndUpdate(@RequestParam("table") String table,
-                                   @RequestParam("data") String data) {
+                                            @RequestParam("data") String data,
+                                            @RequestParam("userId") String userId,
+                                            @RequestParam("version") Long version) {
+        Version v = versionRepository.findByUserId(userId);
+        if (!table.toLowerCase().equals(VERSION) && !v.getVersion().equals(version)) {
+            return new ResponseEntity(HttpStatus.EXPECTATION_FAILED);
+        }
         try {
             switch (table.toLowerCase()) {
                 case TIME:
@@ -206,6 +215,12 @@ public class SaveDataController {
                 case TRAININGS_TO_EQUIPMENTS:
                     trainingsToEquipmentsRepository.save(conversionService.convertDtoToEntity(objectMapper.readValue(data, TrainingsToEquipmentsDto.class)));
                     break;
+                case VERSION:
+                    versionRepository.save(conversionService.convertDtoToEntity(objectMapper.readValue(data, VersionDto.class)));
+            }
+            if (!table.toLowerCase().equals(VERSION)) {
+                v.setVersion(v.getVersion() + 1);
+                versionRepository.save(v);
             }
             return new ResponseEntity(HttpStatus.OK);
         } catch (IOException e) {
@@ -216,7 +231,13 @@ public class SaveDataController {
     @RequestMapping(value = "/delete", method = RequestMethod.POST)
     @ResponseBody
     public ResponseEntity onDelete(@RequestParam("table") String table,
-                                   @RequestParam("id") Long id) {
+                                   @RequestParam("id") Long id,
+                                   @RequestParam("userId") String userId,
+                                   @RequestParam("version") Long version) {
+        var v = versionRepository.findByUserId(userId);
+        if (!v.getVersion().equals(version)) {
+            return new ResponseEntity(HttpStatus.EXPECTATION_FAILED);
+        }
         switch (table.toLowerCase()) {
             case TIME:
                 timeRepository.deleteById(id);
@@ -311,6 +332,10 @@ public class SaveDataController {
             case TRAININGS_TO_EQUIPMENTS:
                 trainingsToEquipmentsRepository.deleteById(id);
                 break;
+        }
+        if (!table.toLowerCase().equals(VERSION)) {
+            v.setVersion(v.getVersion() + 1);
+            versionRepository.save(v);
         }
         return new ResponseEntity(HttpStatus.OK);
     }

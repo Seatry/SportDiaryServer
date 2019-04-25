@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
 
 @RestController
 public class UnloadDataController {
-    private final ObjectMapper objectMapper = new ObjectMapper();
     private final TimeRepository timeRepository;
     private final AimRepository aimRepository;
     private final BlockRepository blockRepository;
@@ -50,6 +49,7 @@ public class UnloadDataController {
     private final TrainingRepository trainingRepository;
     private final TrainingsToAimsRepository trainingsToAimsRepository;
     private final TrainingsToEquipmentsRepository trainingsToEquipmentsRepository;
+    private final VersionRepository versionRepository;
 
     @Autowired
     public UnloadDataController(TimeRepository timeRepository, AimRepository aimRepository, BlockRepository blockRepository,
@@ -63,7 +63,7 @@ public class UnloadDataController {
                                 DayRepository dayRepository, DayToTestRepository dayToTestRepository, DreamAnswerRepository dreamAnswerRepository,
                                 HeartRateRepository heartRateRepository, RestRepository restRepository, SanAnswerRepository sanAnswerRepository,
                                 TrainingExerciseRepository trainingExerciseRepository, TrainingRepository trainingRepository,
-                                TrainingsToAimsRepository trainingsToAimsRepository, TrainingsToEquipmentsRepository trainingsToEquipmentsRepository) {
+                                TrainingsToAimsRepository trainingsToAimsRepository, TrainingsToEquipmentsRepository trainingsToEquipmentsRepository, VersionRepository versionRepository) {
         this.timeRepository = timeRepository;
         this.aimRepository = aimRepository;
         this.blockRepository = blockRepository;
@@ -96,6 +96,7 @@ public class UnloadDataController {
         this.trainingRepository = trainingRepository;
         this.trainingsToAimsRepository = trainingsToAimsRepository;
         this.trainingsToEquipmentsRepository = trainingsToEquipmentsRepository;
+        this.versionRepository = versionRepository;
     }
 
     @SuppressWarnings("Duplicates")
@@ -219,6 +220,10 @@ public class UnloadDataController {
                 .setTrainingPlaces(trainingPlaces)
                 .setTypes(types)
                 .setZones(zones);
+        var version = versionRepository.findByUserId(userId);
+        if (version != null) {
+            unloadDto.setVersionDto(conversionService.convertEntityToDto(version));
+        }
 
         return new ResponseEntity<>(unloadDto, HttpStatus.OK);
     }

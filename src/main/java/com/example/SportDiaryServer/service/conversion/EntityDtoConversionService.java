@@ -201,4 +201,12 @@ public class EntityDtoConversionService {
     public TrainingsToEquipments convertDtoToEntity(TrainingsToEquipmentsDto trainingsToEquipmentsDto) {
         return modelMapper.map(trainingsToEquipmentsDto, TrainingsToEquipments.class);
     }
+
+    public VersionDto convertEntityToDto(Version version) {
+        return modelMapper.map(version, VersionDto.class);
+    }
+
+    public Version convertDtoToEntity(VersionDto versionDto) {
+        return modelMapper.map(versionDto, Version.class);
+    }
 }

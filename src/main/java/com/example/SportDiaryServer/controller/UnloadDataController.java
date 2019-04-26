@@ -6,7 +6,7 @@ import com.example.SportDiaryServer.entity.editEntity.Edit;
 import com.example.SportDiaryServer.repository.*;
 import com.example.SportDiaryServer.repository.editRepository.*;
 import com.example.SportDiaryServer.service.conversion.EntityDtoConversionService;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.firebase.internal.Log;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -100,9 +100,10 @@ public class UnloadDataController {
     }
 
     @SuppressWarnings("Duplicates")
-    @RequestMapping(value = "/unload", method = RequestMethod.GET)
+    @RequestMapping(value = "/auth/unload", method = RequestMethod.GET)
     @ResponseBody
-    public ResponseEntity<UnloadDto> onUnload(@RequestParam("userId") String userId){
+    public ResponseEntity<UnloadDto> onUnload(@RequestParam("userId") String userId) {
+        Log.i("UNLOAD", "START UNLOAD");
         var seasonPlans = seasonPlanRepository.findAllByUserId(userId)
                 .stream()
                 .map(conversionService::convertEntityToDto)

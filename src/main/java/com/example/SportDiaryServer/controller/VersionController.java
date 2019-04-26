@@ -15,7 +15,7 @@ public class VersionController {
         this.versionRepository = versionRepository;
     }
 
-    @RequestMapping(value = "/version", method = RequestMethod.GET)
+    @RequestMapping(value = "/auth/version", method = RequestMethod.GET)
     @ResponseBody
     public ResponseEntity<Long> onGetVersion(@RequestParam("userId") String userId){
         var version = versionRepository.findByUserId(userId);

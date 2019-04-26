@@ -16,7 +16,7 @@ import java.io.IOException;
 import static com.example.SportDiaryServer.enums.Table.*;
 
 @RestController
-@RequestMapping("/save")
+@RequestMapping("/auth/save")
 public class SaveDataController {
     private final ObjectMapper objectMapper = new ObjectMapper();
     private final TimeRepository timeRepository;

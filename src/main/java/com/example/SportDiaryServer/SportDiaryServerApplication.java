@@ -20,7 +20,7 @@ public class SportDiaryServerApplication {
 	@Bean
 	public FirebaseAuth firebaseAuth() throws IOException {
 
-		File file = new File("src/main/java/com/example/SportDiaryServer/sportdiary-f5492-firebase-adminsdk-1ef1b-dfc978db28.json");
+		File file = new File("sportdiary-f5492-firebase-adminsdk-1ef1b-dfc978db28.json");
 		FileInputStream serviceAccount = new FileInputStream(file);
 
 		FirebaseOptions options = new FirebaseOptions.Builder()
